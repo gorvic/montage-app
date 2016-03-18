@@ -117,7 +117,7 @@ exports.Login = AbstractForm.specialize(/** @lends Login# */ {
                         authToken.token = response.data.token;
                         _this.loginForm.submit();  //home
                     }).catch(function(e) {
-                    myApp.showNotification(null, e.data);
+                    myApp.showNotification(null, e.data.message);
                 });
 
             }

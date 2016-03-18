@@ -140,7 +140,7 @@ exports.Signup = AbstractForm.specialize(/** @lends Signup# */ {
                     _this.signUpForm.submit();
                 }).
                 catch(function(e) {
-                    myApp.showNotification(null, e.data.messager);
+                    myApp.showNotification(null, e.data.message);
                 });  
             }
         }
