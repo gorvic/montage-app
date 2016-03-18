@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        Main
+    </title>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "main"}
+            }
+        },
+        "notification": {
+            "prototype": "ui/notification.reel",
+            "properties": {
+                "element": {"#": "notification"},
+                "isVisible": false,
+                "type": ""
+            }
+        },
+        "header": {
+            "prototype": "ui/header.reel",
+            "properties": {
+                "element": {"#": "header"}
+            }
+        },
+        "content": {
+            "prototype": "ui/content.reel",
+            "properties": {
+                "element": {"#": "content"}
+            }
+        },
+        "version": {
+            "prototype": "ui/version.reel",
+            "properties": {
+                "element": {"#": "version"}
+            }
+        },
+        "authWindow": {
+            "prototype": "ui/auth.reel",
+            "properties": {
+                "element": {"#": "authWindow"}
+            }
+        }
+    }
+
+    </script>
+</head>
+<body>
+<div data-montage-id="main" data-montage-skin="light" class="Main">
+    <div data-montage-id="notification" class="Notification"></div>
+    <header data-montage-id="header"></header>
+    <main data-montage-id="content"></main>
+    <footer data-montage-id="version"></footer>
+    <div data-montage-id="authWindow"></div>
+</div>
+</body>
+</html>

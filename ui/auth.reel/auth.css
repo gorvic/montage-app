@@ -1,0 +1,97 @@
+.Auth {
+
+}
+
+.Auth .Window {
+    overflow-y: auto;
+}
+
+.Auth .Section {
+    position: relative;
+    display: none;
+    z-index: 2100;
+}
+
+.Auth .Section.isShown {
+    display: block;
+}
+
+.Auth h2 {
+    color: #797779;
+    font-weight: bold;
+    font-size: 1em;
+    margin: 16px 0;
+    display: inline-block;
+    width: 100%;
+}
+
+.Auth .ToggleSwitch {
+    margin-bottom: 16px;
+}
+
+.Auth .FormSection.Separator {
+    background-color: #999;
+    height: 1px;
+    margin: 32px 0;
+
+}
+
+.Auth .FormSection.Separator span {
+    display: inline-block;
+    background-color: #f4f4f4;
+    padding: 8px;
+    font-weight: bold;
+    font-style: italic;
+    text-transform: lowercase;
+    margin-top: -27px;
+    vertical-align: middle;
+    color: #888;
+}
+
+.Auth .FormSection.SocialNetwork .IconButton {
+    color: white;
+    text-align: left;
+}
+
+.Auth .FormSection.SocialNetwork .IconButton:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.Auth footer {
+    margin: 16px 0;
+}
+
+.Auth footer .IconButton {
+    width: 100%;
+}
+
+.Auth footer .IconButton:not(:first-child) {
+    margin-top: 16px;
+}
+
+
+@media (min-width: 40em) {
+
+    .Auth .FormSection.SocialNetwork,
+    .Auth .FormSection.Separator,
+    .Auth .FormSection.Local {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .Auth .FormSection.SocialNetwork,
+    .Auth .FormSection.Local {
+        width: 240px;
+    }
+
+    .Auth .FormSection.Separator {
+        width: 1px;
+        margin: 0 24px;
+    }
+
+    .Auth .FormSection.Separator span {
+        display: inline;
+        margin-left: -16px;
+    }
+
+}

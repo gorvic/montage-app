@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="window.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "owner"},
+                "windowElement": {"#": "window"},
+                "draggable": true
+            }
+        },
+        "closeButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "closeButton"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+<body>
+    <div data-montage-id="owner" class="WindowWrapper">
+        <div data-montage-id="window" class="Window">
+            <div data-param="*"></div>
+            <div data-montage-id="closeButton" class="CloseButton text-center" >
+                <i class="fa fa-times"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

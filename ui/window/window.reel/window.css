@@ -1,0 +1,67 @@
+.WindowWrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 100%;
+    left: 0;
+    background-color: rgba(0, 0, 0, .44);
+    overflow: hidden;
+    opacity: 0;
+    perspective: 600px;
+    transition: opacity .3s .15s, bottom 0s .3s;
+    z-index: 2000;
+}
+
+.WindowWrapper.isShown {
+    bottom: 0;
+    opacity: 1; 
+    transition: opacity .3s, bottom 0s;
+}
+
+.WindowWrapper .CloseButton {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.Window {
+    background-color: rgba(248, 253, 255, 1);
+    width: 100%;
+    top: 0;
+    height: 100%;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
+    padding: 16px;
+}
+
+.Window .CloseButton {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    color: gray;
+}
+
+.Window .CloseButton .TitleLabel {
+    display: none;
+}
+
+@media screen and (min-width: 40em) {
+
+    .Window {
+        position: relative;
+        margin: 10% auto;
+        height: auto;
+        opacity: 0;
+        max-width: 300px;
+        border-radius: 3px;
+        transition: opacity .3s, transform 0s .4s;
+        box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .WindowWrapper.isShown .Window {
+        transform: none;
+        opacity: 1;
+        transition: opacity .3s, transform .3s;
+    }
+
+
+}

@@ -1,0 +1,47 @@
+.ActiveContent {
+
+}
+
+.ActiveContent .TheContent {
+    display: none;
+    opacity: 0;
+    transition: all 1s;
+    overflow: hidden;
+}
+
+.ActiveContent .Loader {
+    display: none;
+    margin: 16px;
+    padding: 16px;
+    text-transform: uppercase;
+}
+
+.ActiveContent .Loader span {
+    color: #B1B4B6;
+    text-shadow: 0 1px white;
+    font-size: smaller;
+    font-weight: bold;
+}
+
+.ActiveContent .ClipLoader {
+    margin: 0 auto;
+}
+
+.ActiveContent .ClipLoader > div {
+    color: #B1B4B6;
+    opacity: 1;
+}
+
+.ActiveContent.isLoading .Loader {
+    display: block;
+}
+
+.ActiveContent.isLoading .TheContent {
+    display: block;
+    height: 0px;
+}
+
+.ActiveContent.isLoaded .TheContent {
+    display: block;
+    opacity: 1;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="Notification.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "owner"},
+                "contenteditable": "false",
+                "contentElement": {"#": "content"}
+            },
+            "bindings": {
+                "classList.has('Error')": {"<-": "@owner.type == 'Error'"},
+                "classList.has('isVisible')": {"<-": "@owner.isVisible"},
+                "classList.has('Success')": {"<-": "@owner.type == 'Success'"},
+                "isVisible": {"<-": "this.application.isNotificationOn"},
+                "type": {"<-": "this.application.NotificationType"}
+            }
+        },
+        "hiddenField": {
+            "prototype": "montage/ui/text-field.reel",
+            "properties": {
+                "element": {"#": "hiddenField"},
+                "contenteditable": "true",
+                "dir": "ltr",
+                "draggable": "true"
+            }
+        },
+        "messages": {
+            "prototype": "matte/ui/dynamic-element.reel",
+            "properties": {
+                "element": {"#": "messages"},
+                "allowedTagNames": [
+                    "br",
+                    "p",
+                    "i"
+                ]
+            },
+            "bindings": {
+                "innerHTML": {"<-": "this.application.NotificationMessage"}
+            }
+        }
+    }
+
+    </script>
+</head>
+<body>
+<div data-montage-id="owner" class="Notification">
+    <div data-montage-id="content" class="CaContent">
+        <div data-montage-id="messages"></div>
+        <input data-montage-id="hiddenField" type="text">
+    </div>
+</div>
+</body>
+</html>

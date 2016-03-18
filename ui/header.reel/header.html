@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "header"}
+            }
+        },
+        "loginButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "loginButton"},
+                "label": "Login"
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+        "loginButtonCondition": {
+            "prototype": "montage/ui/condition.reel",
+            "properties": {
+                "element": {"#": "loginButtonCondition"}
+            },
+            "bindings": {
+                "condition": {"<-": "!this.application.user.isAuthed"}
+            }
+        },
+        "logoutButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "logoutButton"},
+                "label": "Logout"
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "useCapture": false,
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+        "registerButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "registerButton"},
+                "label": "Sign Up"
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+        "registerButtonCondition": {
+            "prototype": "montage/ui/condition.reel",
+            "properties": {
+                "element": {"#": "registerButtonCondition"}
+            },
+            "bindings": {
+                "condition": {"<->": "!this.application.user.isAuthed"}
+            }
+        },
+        "userMenuCondition": {
+            "prototype": "montage/ui/condition.reel",
+            "properties": {
+                "element": {"#": "userMenuCondition"}
+            },
+            "bindings": {
+                "condition": {"<->": "this.application.user.isAuthed"}
+            }
+        },
+         "profileButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "profileButton"}
+            },
+            "bindings": {
+                "label": {"<-": "this.application.user.email + ' (' + this.application.user._roles[0].name + ')'"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        }
+    }
+
+
+
+
+    </script>
+</head>
+<body>
+<nav data-montage-id="header" class="navbar navbar-default">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#!/home">
+                <span class="glyphicon glyphicon-road"></span>
+            </a>
+        </div>
+
+
+        <ul class="nav navbar-nav pull-right list-inline">
+            <li data-montage-id="registerButtonCondition">
+                <button data-montage-id="registerButton" class="btn btn-info btn-block  navbar-btn"></button>
+            </li>
+            <li data-montage-id="loginButtonCondition">
+                <button data-montage-id="loginButton" class="btn btn-info btn-block  navbar-btn"></button>
+            </li>
+        </ul>
+
+
+
+        <ul class="nav navbar-nav pull-right list-inline">
+            <li data-montage-id="userMenuCondition">
+                <!--<button data-montage-id="profileButton" class="btn btn-success btn-block  navbar-btn"></button>-->
+
+                <!--<div class="btn-group">-->
+                    <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"-->
+                            <!--aria-haspopup="true" aria-expanded="false">-->
+                        <!--Action <span class="caret"></span>-->
+                    <!--</button>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                        <!--<li><a href="#">Another action</a></li>-->
+                        <!--<li><a href="#">Something else here</a></li>-->
+                        <!--<li role="separator" class="divider"></li>-->
+                        <!--<li><a href="#">Separated link</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success btn-block   dropdown-toggle navbar-btn"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            data-montage-id="profileButton">
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <button data-montage-id="logoutButton" class="btn"></button>
+                        </li>
+                    </ul>
+                </div>
+                <!--<button data-montage-id="logoutButton" class="btn btn-success btn-block  navbar-btn"></button>-->
+            </li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,82 @@
+.Notification {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 100%;
+    background-color:rgba(0, 0, 0, .44);
+    z-index: 3000;
+    transition:
+        bottom 0s .3s,
+        opacity .3s;
+    text-align: center;
+}
+
+.Notification.isVisible {
+    bottom: 0;
+    opacity: 1;
+    transition:
+        bottom 0s,
+        opacity .3s;
+}
+
+.CaContent {
+    position:relative;
+    margin-top: -20px;
+    padding: 1em;
+    max-width: 400px;
+    display: inline-block;
+    background-color: #fce6e2;
+    border-radius: 2px;
+    border: 1px solid indianred;
+    color: indianred;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    text-align: left;
+    transition:
+        height .3s,
+        color .3s, border.3s,
+        background-color .3s,
+        max-height .2s,
+        margin .3s,
+        opacity .3s;
+    max-height: 0px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.Success .CaContent {
+    color: green;
+    border: 1px solid rgba(0, 255, 0, .6);
+    background-color: #e6fce2;
+}
+
+.Notification.isVisible .CaContent {
+    opacity: 1;
+    margin-top: 70px;
+    max-height: 500px;
+    transition:
+        height .3s,
+        color .3s, border .3s,
+        background-color .3s,
+        max-height .2s,
+        margin .3s, 
+        opacity .3s;
+}
+
+[data-montage-id="hiddenField"] {
+
+    height: 0px!important;
+    padding: 0!important;
+    margin: 0!important;
+    border: none!important;
+}
+
+@media (min-width: 40em) {
+    
+    .CaContent {
+    }
+    
+    .Notification.isVisible .CaContent {
+    }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="content.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "owner"},
+                "activeContent": {"@": "activeContent"}
+            }
+        },
+        "contentSection": {
+            "prototype": "montage/ui/substitution.reel",
+            "properties": {
+                "element": {"#": "contentSections"},
+                "switchValue": "home"
+            },
+            "bindings": {
+                "switchValue": {"<-": "@router.parts.get('root')"}
+            }
+        },
+        "router": {
+            "prototype": "core/router",
+            "properties": {
+                "defaultRoot": "home",
+                "routes": [
+                    "root:home"
+                ]
+            }
+        },
+        "profileSection": {
+            "prototype": "ui/account/profile.reel",
+            "properties": {
+                "element": {"#": "profileSection"}
+            }
+        },
+        "activeContent": {
+            "prototype": "ui/active-content.reel",
+            "properties": {
+                "element": {"#": "activeContent"}
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <main data-montage-id="owner" class="Content">
+        <div class="row">
+            <div data-montage-id="activeContent">
+                <div data-montage-id="contentSections" class="ContentSections column small-12 medium-11 large-10 small-centered">
+                    <div data-arg="home">
+                            Content
+                    </div>
+                    <div data-arg="profile" data-montage-id="profileSection" class="ContentSection">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

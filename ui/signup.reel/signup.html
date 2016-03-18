@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="signup.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "owner"},
+                "description": {"#": "description"},
+                "signUpForm": {"#": "signUpForm"},
+                "facebookSignUpLabel": {"#": "facebookSignUpLabel"},
+                "googleSignUpLabel": {"#": "googleSignUpLabel"},
+                "linkedInSignUpLabel": {"#": "linkedInSignUpLabel"}
+            }
+        },
+        "cancelIconButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "cancelIconButton"},
+                "contenteditable": "false",
+                "dir": "ltr",
+                "draggable": "false"
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "useCapture": false,
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+        "confirmPasswordTextField": {
+            "prototype": "montage/ui/text-field.reel",
+            "properties": {
+                "element": {"#": "confirmPasswordTextField"},
+                "contenteditable": "true",
+                "dir": "ltr",
+                "draggable": "false"
+            }
+        },
+        "emailTextField": {
+            "prototype": "montage/ui/text-field.reel",
+            "properties": {
+                "element": {"#": "emailTextField"},
+                "contenteditable": "true",
+                "dir": "ltr",
+                "draggable": "false"
+            }
+        },
+        "haveAccountIconButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "haveAccountIconButton"},
+                "contenteditable": "false",
+                "dir": "ltr",
+                "draggable": "false"
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "useCapture": false,
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+        "newPasswordTextField": {
+            "prototype": "montage/ui/text-field.reel",
+            "properties": {
+                "element": {"#": "newPasswordTextField"},
+                "contenteditable": "true",
+                "dir": "ltr",
+                "draggable": "false"
+            }
+        },
+        "submitSignUpIconButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "submitSignUpIconButton"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+        "formTitle": {
+            "prototype": "digit/ui/title.reel",
+            "properties": {
+                "element": {"#": "formTitle"}
+            }
+        },
+       "inputIsAdmin": {
+            "prototype": "montage/ui/checkbox.reel",
+            "properties": {
+                "element": {
+                    "#": "inputIsAdmin"
+                }
+            },
+            "bindings": {
+                "checked": {
+                    "<->": "@owner.isAdmin"
+                }
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <div data-montage-id="owner" class="Signup">
+        <div class="text-center">
+            <h2 data-montage-id="formTitle" class="text-center"></h2>
+        </div>
+        <p data-montage-id="description" class="notification success"></p>
+        <section>
+            <form method="POST" data-montage-id="signUpForm">
+
+                <div class="checkbox" >
+                    <label>
+                        <input type="checkbox" data-montage-id="inputIsAdmin"/>&nbsp Admin role
+                    </label>
+                </div>
+
+                <input data-montage-id="emailTextField" type="text" class="InputField" spellcheck="false">
+                <input data-montage-id="newPasswordTextField" type="password" class="InputField">
+                <input data-montage-id="confirmPasswordTextField" type="password" class="InputField">
+                <button type="button" data-montage-id="submitSignUpIconButton" class="btn btn-success btn-block"></button>
+            </form>
+            <hr>
+            <section>
+                <div>
+                    <a class="btn btn-primary btn-block" href="myApp/auth/facebook/signup">
+                        <i class="fa fa-facebook"></i>
+                        <span data-montage-id="facebookSignUpLabel" class="LabelTitle"></span>
+                    </a>
+                </div>
+                <div>
+                    <a class="btn btn-danger btn-block" href="myApp/auth/google/signup">
+                        <i class="fa fa-google"></i>
+                        <span data-montage-id="googleSignUpLabel" class="LabelTitle"></span>
+                    </a>
+                </div>
+                <div>
+                    <a class="btn btn-info btn-block" href="myApp/auth/linkedin/signup">
+                        <i class="fa fa-linkedin"></i>
+                        <span data-montage-id="linkedInSignUpLabel" class="LabelTitle"></span>
+                    </a>
+                </div>
+            </section>
+            <div style="display: none" data-montage-id="cancelIconButton" class="Button"></div>
+       </section>
+        <footer>
+            <button data-montage-id="haveAccountIconButton"></button>
+        </footer>
+    </div>
+</body>
+</html>

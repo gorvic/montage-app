@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="auth.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "owner"}
+            }
+        },
+        "window": {
+            "prototype": "ui/window/window.reel",
+            "properties": {
+                "element": {"#": "window"}
+            }
+        },
+        "login": {
+            "prototype": "ui/login.reel",
+            "properties": {
+                "element": {"#": "login"}
+            }
+        },
+        "signup": {
+            "prototype": "ui/signup.reel",
+            "properties": {
+                "element": {"#": "signup"}
+            }
+        }
+    }
+
+
+    </script>
+</head>
+<body>
+<div data-montage-id="owner" class="Auth">
+    <div data-montage-id="window">
+        <div data-section-name="login" class="Section">
+            <div data-montage-id="login"></div>
+        </div>
+        <div data-section-name="signup" class="Section">
+            <div data-montage-id="signup"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

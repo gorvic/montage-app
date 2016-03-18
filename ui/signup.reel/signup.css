@@ -1,0 +1,25 @@
+.Signup {
+
+}
+
+.SubmitSignUp {
+    /*margin-bottom: 8px;*/
+}
+
+.SubmitSignUp .Icon {
+    transform: rotate(90deg);
+}
+
+.Signup .ToggleSwitch .Button.Option {
+    padding: 16px 24px;
+}
+
+@media (min-width: 40em) {
+
+    .Auth .Signup .FormSection.Separator {
+        height: 290px;
+        line-height: 290px;
+    }
+
+}
+

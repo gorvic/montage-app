@@ -1,0 +1,11 @@
+.Login {
+
+}
+
+@media (min-width: 40em) {
+    
+    .Auth .Login .FormSection.Separator {
+        height: 200px;
+        line-height: 200px;
+    }
+}

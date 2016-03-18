@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "owner"},
+                "loginForm": {"#": "loginForm"},
+                "facebookSignInLabel": {"#": "facebookSignInLabel"},
+                "googleSignInLabel": {"#": "googleSignInLabel"},
+                "linkedInSignInLabel": {"#": "linkedInSignInLabel"}
+            }
+        },
+        "createAccountIconButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "createAccountIconButton"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "useCapture": false,
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+        "emailTextField": {
+            "prototype": "montage/ui/text-field.reel",
+            "properties": {
+                "element": {"#": "emailTextField"}
+            }
+        },
+        "formTitle": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "formTitle"}
+            }
+        },
+        "passwordTextField": {
+            "prototype": "montage/ui/text-field.reel",
+            "properties": {
+                "element": {"#": "passwordTextField"}
+            }
+        },
+        "submitSignInIconButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "submitSignInIconButton"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+<body>
+<div data-montage-id="owner" class="Login">
+    <div class="text-center">
+        <h2 data-montage-id="formTitle" class="text-center"></h2>
+    </div>
+    <section>
+        <form method="POST" data-montage-id="loginForm">
+            <div class="form-group">
+                <input data-montage-id="emailTextField" type="text" class="InputField" spellcheck="false">
+                <input data-montage-id="passwordTextField" type="password" class="InputField">
+            </div>
+            <button type="button" data-montage-id="submitSignInIconButton" class="btn btn-success btn-block"></button>
+           <hr>
+            <section>
+                <div>
+                    <a class="btn btn-primary btn-block" href="myApp/auth/facebook/login">
+                        <i class="fa fa-facebook"></i>
+                        <span data-montage-id="facebookSignInLabel" class="LabelTitle"></span>
+                    </a>
+                </div>
+                <div>
+                    <a class="btn btn-danger btn-block" href="myApp/auth/google/login">
+                        <i class="fa fa-google"></i>
+                        <span data-montage-id="googleSignInLabel" class="LabelTitle"></span>
+                    </a>
+                </div>
+                <div>
+                    <a class="btn btn-info btn-block" href="myApp/auth/linkedin/login">
+                        <i class="fa fa-linkedin"></i>
+                        <span data-montage-id="linkedInSignInLabel" class="LabelTitle"></span>
+                    </a>
+                </div>
+            </section>
+        </form>
+    </section>
+    <footer>
+        <div data-montage-id="createAccountIconButton"></div>
+    </footer>
+</div>
+</body>
+</html>
