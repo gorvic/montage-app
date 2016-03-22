@@ -137,6 +137,7 @@ exports.Signup = AbstractForm.specialize(/** @lends Signup# */ {
                     password: this.templateObjects.newPasswordTextField.value}).
                 then(function() {
                     //no tokens
+                    _this.cleanUpForm();
                     _this.signUpForm.submit();
                 }).
                 catch(function(e) {

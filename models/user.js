@@ -9,6 +9,8 @@ exports.User = Montage.specialize(/** @lends User# */ {
 
     email: { value: ''},
 
+    _authProvider: {value: null},
+
     _roles: { value: []},
 
     isAuthed: { value: false},
@@ -29,6 +31,7 @@ exports.User = Montage.specialize(/** @lends User# */ {
                     this._model = model;
                     this.email = model.email;
                     this._roles = model.roles;
+                    this._authProvider = model.authProvider;
                 }
 
                 this.isAuthed = model && true;

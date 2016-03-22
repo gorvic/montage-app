@@ -90,9 +90,6 @@ exports.Auth = Component.specialize(/** @lends Auth# */ {
                 case 'signup':
                     this.templateObjects.signup.cleanUpForm();
                     break;
-                case 'forpass':
-                    this.templateObjects.forgottenPassword.cleanUpForm();
-                    break;
             }
 
             this.section = section;

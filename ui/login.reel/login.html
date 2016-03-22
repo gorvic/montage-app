@@ -9,7 +9,6 @@
             "properties": {
                 "element": {"#": "owner"},
                 "loginForm": {"#": "loginForm"},
-                "facebookSignInLabel": {"#": "facebookSignInLabel"},
                 "googleSignInLabel": {"#": "googleSignInLabel"},
                 "linkedInSignInLabel": {"#": "linkedInSignInLabel"}
             }
@@ -56,6 +55,30 @@
                     "listener": {"@": "owner"}
                 }
             ]
+        },
+        "facebookSignInIconButton": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "facebookSignInIconButton"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+        "facebookSignInHref": {
+            "prototype": "montage/ui/button.reel",
+            "properties": {
+                "element": {"#": "facebookSignInHref"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
         }
     }
     </script>
@@ -75,13 +98,11 @@
            <hr>
             <section>
                 <div>
-                    <a class="btn btn-primary btn-block" href="myApp/auth/facebook/login">
-                        <i class="fa fa-facebook"></i>
-                        <span data-montage-id="facebookSignInLabel" class="LabelTitle"></span>
-                    </a>
+                    <button type="button" data-montage-id="facebookSignInIconButton" class="btn btn-primary btn-block">
+                    </button>
                 </div>
                 <div>
-                    <a class="btn btn-danger btn-block" href="myApp/auth/google/login">
+                    <a class="btn btn-danger btn-block" data-montage-id="facebookSignInHref" href="http://localhost:8080/api/auth/facebook" target="_self">
                         <i class="fa fa-google"></i>
                         <span data-montage-id="googleSignInLabel" class="LabelTitle"></span>
                     </a>

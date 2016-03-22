@@ -83,7 +83,9 @@
                 "element": {"#": "profileButton"}
             },
             "bindings": {
-                "label": {"<-": "this.application.user.email + ' (' + this.application.user._roles[0].name + ')'"}
+                "label": {"<-": "this.application.user.email + ' (' + this.application.user._roles[0].name + ')'"},
+                "classList.has('btn-success')": {"<-": "this.application.user._authProvider == 'local'"},
+                "classList.has('btn-primary')": {"<-": "this.application.user._authProvider == 'facebook'"}
             },
             "listeners": [
                 {
@@ -93,10 +95,6 @@
             ]
         }
     }
-
-
-
-
     </script>
 </head>
 <body>
@@ -123,23 +121,9 @@
 
         <ul class="nav navbar-nav pull-right list-inline">
             <li data-montage-id="userMenuCondition">
-                <!--<button data-montage-id="profileButton" class="btn btn-success btn-block  navbar-btn"></button>-->
 
-                <!--<div class="btn-group">-->
-                    <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"-->
-                            <!--aria-haspopup="true" aria-expanded="false">-->
-                        <!--Action <span class="caret"></span>-->
-                    <!--</button>-->
-                    <!--<ul class="dropdown-menu">-->
-                        <!--<li><a href="#">Action</a></li>-->
-                        <!--<li><a href="#">Another action</a></li>-->
-                        <!--<li><a href="#">Something else here</a></li>-->
-                        <!--<li role="separator" class="divider"></li>-->
-                        <!--<li><a href="#">Separated link</a></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
                 <div class="btn-group">
-                    <button type="button" class="btn btn-success btn-block   dropdown-toggle navbar-btn"
+                    <button type="button" class="btn btn-block   dropdown-toggle navbar-btn"
                             data-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false"

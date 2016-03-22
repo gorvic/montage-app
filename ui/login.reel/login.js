@@ -1,4 +1,3 @@
-
 var AbstractForm = require("ui/abstract-form").AbstractForm,
     validator = require("core/validate.min.js"),
     authToken = require("core/auth-token").AuthToken;
@@ -24,16 +23,16 @@ exports.Login = AbstractForm.specialize(/** @lends Login# */ {
             this.super();
         }
     },
-    
+
     templateDidLoad: {
-        value: function() {
+        value: function () {
 
             this.templateObjects.formTitle.value = "LOGIN";
 
             //Socials
-            this.facebookSignInLabel.innerHTML= 'Login with <b>Facebook</b>';
-            this.googleSignInLabel.innerHTML= 'Login with <b>Google</b>';
-            this.linkedInSignInLabel.innerHTML= 'Login with <b>LinkedIn</b>';
+            //this.facebookSignInLabel.innerHTML= 'Login with <b>Facebook</b>';
+            this.googleSignInLabel.innerHTML = 'Login with <b>Google</b>';
+            this.linkedInSignInLabel.innerHTML = 'Login with <b>LinkedIn</b>';
 
             //placeholders
             this.templateObjects.emailTextField.placeholder = "Email";
@@ -41,6 +40,7 @@ exports.Login = AbstractForm.specialize(/** @lends Login# */ {
 
             //buttons
             this.templateObjects.submitSignInIconButton.label = "Login";
+            this.templateObjects.facebookSignInIconButton.label = "Login with Facebook";
             this.templateObjects.createAccountIconButton.label = "Not a member? Sign up.";
 
             //abs. form
@@ -53,7 +53,7 @@ exports.Login = AbstractForm.specialize(/** @lends Login# */ {
     },
 
     cleanUpForm: {
-        value: function() {
+        value: function () {
 
             this.templateObjects.emailTextField.value =
                 this.templateObjects.passwordTextField.value = '';
@@ -65,7 +65,7 @@ exports.Login = AbstractForm.specialize(/** @lends Login# */ {
     },
 
     focus: {
-        value: function() {
+        value: function () {
             this.templateObjects.emailTextField.element.focus();
         }
     },
@@ -75,9 +75,9 @@ exports.Login = AbstractForm.specialize(/** @lends Login# */ {
             this.submitForm();
         }
     },
-    
+
     submitForm: {
-        value: function() {
+        value: function () {
             var email = this.templateObjects.emailTextField.value,
                 password = this.templateObjects.passwordTextField.value;
 
@@ -112,11 +112,12 @@ exports.Login = AbstractForm.specialize(/** @lends Login# */ {
                     password: password
                 };
 
-                 ajaxLib.post('auth/login', credentials)
-                    .then(function(response) {
+                ajaxLib.post('auth/login', credentials)
+                    .then(function (response) {
                         authToken.token = response.data.token;
+                        _this.cleanUpForm();
                         _this.loginForm.submit();  //home
-                    }).catch(function(e) {
+                    }).catch(function (e) {
                     myApp.showNotification(null, e.data.message);
                 });
 
@@ -129,6 +130,66 @@ exports.Login = AbstractForm.specialize(/** @lends Login# */ {
         value: function () {
             myApp.authWindow.show('signup');
         }
-    }
+    },
 
-});
+    handleFacebookSignInIconButtonAction: {
+        value: function () {
+
+            var _this = this;
+
+            //window.location.href = "http://" + baseRequestURL + "/auth/facebook";
+            // Asynchronously initialize Facebook SDK
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '968577683256853',
+                    responseType: 'token',
+                    version: 'v2.5'
+                });
+
+                //FB.getLoginStatus(function (response) {
+                //    statusChangeCallback(response);
+                //});
+
+                FB.login(function (response) {
+                    //http://stackoverflow.com/questions/32584850/facebook-js-sdks-fb-api-me-method-doesnt-return-the-fields-i-expect-in-gra
+                    FB.api('/me', 'get', {access_token: token, fields: 'id,name,email'},function (profile) {
+                            var data = {
+                                signedRequest: response.authResponse.signedRequest,
+                                profile: profile
+                            };
+
+                            ajaxLib.post('/auth/facebook', data)
+                                .then(function (response) {
+                                    //var payload = JSON.parse(window.atob(token.split('.')[1]));
+                                    authToken.token = response.data.token;
+                                    _this.cleanUpForm();
+                                    _this.loginForm.submit();  //home
+                                    //myApp.showNotification(null, 'We have been signed with Facebook');
+                                    //window.location.path('/');
+                                }).catch(function (e) {
+                                //myApp.showNotification(null, e.message);
+                                });
+                            });
+                    }, {scope: 'public_profile,email'}
+                );
+            };
+
+            // Load the SDK asynchronously
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        }
+    },
+
+    handleFacebookSignInHrefAction: {
+        value: function () {
+            myApp.showNotification(null, "Href")
+        }
+    }
+})
+;
