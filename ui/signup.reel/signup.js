@@ -48,9 +48,9 @@ exports.Signup = AbstractForm.specialize(/** @lends Signup# */ {
             this.templateObjects.formTitle.value = 'SIGN UP';
 
             //Socials
-            this.facebookSignUpLabel.innerHTML= 'Sign up with <b>Facebook</b>';
-            this.googleSignUpLabel.innerHTML= 'Sign up with <b>Google</b>';
-            this.linkedInSignUpLabel.innerHTML= 'Sign up with <b>LinkedIn</b>';
+            //this.facebookSignUpLabel.innerHTML= 'Sign up with <b>Facebook</b>';
+            //this.googleSignUpLabel.innerHTML= 'Sign up with <b>Google</b>';
+            //this.linkedInSignUpLabel.innerHTML= 'Sign up with <b>LinkedIn</b>';
 
             //placeholders
             this.templateObjects.emailTextField.placeholder = "Enter your email";
