@@ -27,6 +27,30 @@ exports.Login = AbstractForm.specialize(/** @lends Login# */ {
     templateDidLoad: {
         value: function () {
 
+            // Asynchronously initialize Facebook SDK
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '968577683256853',
+                    responseType: 'token',
+                    version: 'v2.5'
+                });
+
+                //FB.getLoginStatus(function (response) {
+                //    statusChangeCallback(response);
+                //});
+
+            };
+
+            // Load the SDK asynchronously
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
             this.templateObjects.formTitle.value = "LOGIN";
 
             //Socials
@@ -137,52 +161,28 @@ exports.Login = AbstractForm.specialize(/** @lends Login# */ {
 
             var _this = this;
 
-            //window.location.href = "http://" + baseRequestURL + "/auth/facebook";
-            // Asynchronously initialize Facebook SDK
-            window.fbAsyncInit = function () {
-                FB.init({
-                    appId: '968577683256853',
-                    responseType: 'token',
-                    version: 'v2.5'
-                });
-
-                //FB.getLoginStatus(function (response) {
-                //    statusChangeCallback(response);
-                //});
-
-                FB.login(function (response) {
+            FB.login(function (response) {
                     //http://stackoverflow.com/questions/32584850/facebook-js-sdks-fb-api-me-method-doesnt-return-the-fields-i-expect-in-gra
-                    FB.api('/me', 'get', {access_token: token, fields: 'id,name,email'},function (profile) {
-                            var data = {
-                                signedRequest: response.authResponse.signedRequest,
-                                profile: profile
-                            };
+                    FB.api('/me', 'get', {access_token: token, fields: 'id,name,email'}, function (profile) {
+                        var data = {
+                            signedRequest: response.authResponse.signedRequest,
+                            profile: profile
+                        };
 
-                            ajaxLib.post('/auth/facebook', data)
-                                .then(function (response) {
-                                    //var payload = JSON.parse(window.atob(token.split('.')[1]));
-                                    authToken.token = response.data.token;
-                                    _this.cleanUpForm();
-                                    _this.loginForm.submit();  //home
-                                    //myApp.showNotification(null, 'We have been signed with Facebook');
-                                    //window.location.path('/');
-                                }).catch(function (e) {
-                                //myApp.showNotification(null, e.message);
-                                });
-                            });
-                    }, {scope: 'public_profile,email'}
-                );
-            };
-
-            // Load the SDK asynchronously
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
+                        ajaxLib.post('/auth/facebook', data)
+                            .then(function (response) {
+                                //var payload = JSON.parse(window.atob(token.split('.')[1]));
+                                authToken.token = response.data.token;
+                                _this.cleanUpForm();
+                                _this.loginForm.submit();  //home
+                                //myApp.showNotification(null, 'We have been signed with Facebook');
+                                //window.location.path('/');
+                            }).catch(function (e) {
+                            //myApp.showNotification(null, e.message);
+                        });
+                    });
+                }, {scope: 'public_profile,email'}
+            );
         }
     },
 
